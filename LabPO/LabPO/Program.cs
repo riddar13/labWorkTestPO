@@ -15,6 +15,7 @@ namespace LabPO
             {
                 Console.WriteLine("Number of task (1-10) or 'q' to exit:");
                 var num = Console.ReadLine();
+                string result;
                 Console.Clear();
 
                 switch (num)
@@ -30,8 +31,8 @@ namespace LabPO
 
                         if (Int32.TryParse(st, out n))
                         {
-                            var result = Task.Method(n);
-                            Console.WriteLine("2n! = " + result);
+                            var result1 = Task.Method(n);
+                            Console.WriteLine("2n! = " + result1);
                         }
                         else
                         {
@@ -47,14 +48,15 @@ namespace LabPO
 
                     case "2":
                         Console.WriteLine("------2nd task------\n" +
-                            "Дана строка, состоящая из русских слов, разделенных пробелами" +
+                            "Дана строка, состоящая из слов, разделенных пробелами" +
                             "(одним или несколькими).Вывести строку, содержащую эти же слова" +
                             "(разделенные одним пробелом), но расположенные в обратном порядке. \nEnter string:");
 
-                        string str = Console.ReadLine();
-                        Console.WriteLine("Result: {0}",
-                            string.Join(" ", str.Split(new char[] { ' ' },
-                            StringSplitOptions.RemoveEmptyEntries).Reverse()));
+                        SecondTask TaskSecond = new SecondTask();
+                        st = Console.ReadLine();
+                        result = TaskSecond.Method(st);
+                        Console.WriteLine("Result: {0}", result);
+
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
                         Console.ResetColor();
