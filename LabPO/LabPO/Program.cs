@@ -69,17 +69,16 @@ namespace LabPO
                             "подпоследовательность чисел такую, что каждый последующий элемент " +
                             "подпоследовательности делился нацело на предыдущий. ");
 
-                        // ThirdTask TaskThree = new ThirdTask();
+                        ThirdTask TaskThree = new ThirdTask();
 
-                        List<int> list;
-                        list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
+                        List<int> list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
 
                         foreach (int i in list)
                             Console.Write(i + " ");
                         Console.WriteLine();
 
-                        //  foreach (int i in TaskThree.Procedure(list))
-                        //        Console.Write(i + " ");
+                        foreach (int i in TaskThree.Procedure(list))
+                               Console.Write(i + " ");
                         Console.WriteLine();
 
                         Console.ForegroundColor = ConsoleColor.Red;
