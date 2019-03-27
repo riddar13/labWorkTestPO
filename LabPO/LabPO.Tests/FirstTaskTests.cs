@@ -20,5 +20,33 @@ namespace LabPO.Tests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Factorial_0_2returned()
+        {
+            // arrange
+            int x = 0;
+            int expected = 2;
+
+            // act
+            FirstTask c = new FirstTask();
+            int actual = c.Method(x);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Factorial_1_2returned()
+        {
+            // arrange
+            int x = 1;
+            int expected = 2;
+
+            // act
+            FirstTask c = new FirstTask();
+            int actual = c.Method(x);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
