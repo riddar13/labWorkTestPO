@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{007B18D0-0C55-4D73-A785-5BB8C13B4CAC}</ProjectGuid>
+    <ProjectGuid>{B292976A-D2DB-4CA8-9E1B-F8DE11CA89BD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lwTestPO</RootNamespace>
-    <AssemblyName>lwTestPO</AssemblyName>
+    <RootNamespace>LabPO</RootNamespace>
+    <AssemblyName>LabPO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirstTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
