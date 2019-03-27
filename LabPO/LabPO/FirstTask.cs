@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LabPO
 {
-    class FirstTask
+   public class FirstTask
     {
         public int Method(int n)
         {
