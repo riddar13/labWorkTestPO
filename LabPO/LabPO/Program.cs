@@ -149,9 +149,9 @@ namespace LabPO
                         Console.WriteLine("------5th task------\n" +
                             "Вставить в массив максимальный элемент после каждого участка, " +
                             "на котором его элементы образуют возрастающую последовательность.");
-                        //  FifthTask TaskFive = new FifthTask();
+                        FifthTask TaskFive = new FifthTask();
                         list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
-                        //  TaskFive.Method(list);
+                        TaskFive.Method(list);
 
 
                         Console.ForegroundColor = ConsoleColor.Red;
