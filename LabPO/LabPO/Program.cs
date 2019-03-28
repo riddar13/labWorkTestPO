@@ -171,7 +171,7 @@ namespace LabPO
                         List<int> listSix;
                         string strg = Console.ReadLine();
                         int range = Convert.ToInt32(strg);
-                        // int range = 9;
+        
                         listSix = Enumerable.Range(0, range).Select(q => r.Next(1, 10)).ToList();
                         sixthTask.Method(listSix);
 
