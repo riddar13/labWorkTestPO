@@ -186,11 +186,16 @@ namespace LabPO
                         Console.WriteLine("------7th task------\n" +
                             "Найти количество цифр в массиве и определить, какая из них сколько " +
                             "встречается.");
-                        //  SeventhTask seventhTask = new SeventhTask();
+                        SeventhTask seventhTask = new SeventhTask();
 
-                        int[] arrey = { 1, 4, 3, 5, 4, 7, 6, 5, 4, 5, 3, 1, 8, 9, 8, 4 };
+                        //int[] arrey = { 1, 4, 3, 5, 4, 7, 6, 5, 4, 5, 3, 1, 8, 9, 8, 4 };
+                        int[] array = new int[10];
+                        Random rand = new Random();
+                        for (int i = 0; i < array.Length; i++)
+                            array[i] = rand.Next(1, 10); // [0 - 2^31)
 
-                        //   seventhTask.Method(arrey);
+
+                        seventhTask.Method(array);
 
 
                         Console.ForegroundColor = ConsoleColor.Red;
