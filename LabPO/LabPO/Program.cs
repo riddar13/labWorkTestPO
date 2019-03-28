@@ -224,10 +224,10 @@ namespace LabPO
                         }
                         var resultEig = eiTask.Method(a);
                         //int[,] c = new int[2, 3] { { 2, -1, 8 }, { 7, 2, -4 } };
-                        foreach (int element in a)
-                        {
-                            Console.WriteLine("{0,4}", element);
-                        }
+                       // foreach (int element in a)
+                       // {
+                       //     Console.WriteLine("{0,4}", element);
+                        //}
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
