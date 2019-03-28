@@ -8,7 +8,7 @@ namespace LabPO
 {
     public class FifthTask
     {
-        public void Method(List<int> a)
+        public List<int> Method(List<int> a)
         {
             var list = new List<int>();
             var b = a.Max();
@@ -39,6 +39,7 @@ namespace LabPO
             list.Add(b);
             foreach (int i in list)
                 Console.Write(i + " ");
+            return list; 
         }
     }
 }
