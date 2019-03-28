@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirstTaskTests.cs" />
+    <Compile Include="FouthTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondTaskTests.cs" />
     <Compile Include="ThirdTaskTests.cs" />

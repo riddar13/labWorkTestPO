@@ -71,8 +71,26 @@ namespace LabPO
 
                         ThirdTask TaskThree = new ThirdTask();
 
-                        List<int> list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
-
+                        //List<int> list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
+                        var list = new List<int>();
+                        for (int i = 0; i < 10; i++)
+                        {
+                            var str = Console.ReadLine();
+                            if (Int32.TryParse(str, out n))
+                            {
+                                n = Int32.Parse(str);
+                                if ((n == 0) || (n<0))
+                                {
+                                    Console.WriteLine("Некорректный ввод");
+                                }
+                                else
+                                    list.Add(n);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }
+                        }
                         foreach (int i in list)
                             Console.Write(i + " ");
                         Console.WriteLine();
@@ -92,12 +110,16 @@ namespace LabPO
                             "Дан массив a[1..n] и число b. Переставить числа в массиве таким образом, " +
                             "чтобы слева от некоторой границы стояли числа, меньшие или равные b, " +
                             "а справа от границы - большие или равные b. ");
-                        // FouthTask TaskF = new FouthTask();
+                        FouthTask TaskF = new FouthTask();
 
                         int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
-                        string strFour = Console.ReadLine();
-                        int b = Convert.ToInt32(strFour);
-                        //   TaskF.Method(arr, b);
+                        foreach (int i in arr)
+                            Console.Write(i + " ");
+                        Console.Write("\n");
+                        var list23 = new List<int>();
+                      //  list23 = Console.ReadLine();
+                        //int b = Convert.ToInt32(strFour);
+                        TaskF.Method(arr, strFour);
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");

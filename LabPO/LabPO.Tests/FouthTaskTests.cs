@@ -5,20 +5,12 @@ using System.Collections.Generic;
 namespace LabPO.Tests
 {
     [TestClass]
-    public class ThirdTaskTests
+    public class FouthTaskTests
     {
         [TestMethod]
-        public void OrderBy122233_1222returned()
+        public void Sort1943672580_5by_1432059678returned()
         {
-            var list = new List<int>()
-            {
-                1,
-                2,
-                2,
-                2,
-                3,
-                3
-            };
+            int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
             var expected = new List<int>()
             {
                 1,
@@ -26,10 +18,10 @@ namespace LabPO.Tests
                 2,
                 2
             };
-            ThirdTask c = new ThirdTask();
-            var actual = c.Procedure(list);
+            FouthTask c = new FouthTask();
+          //  var actual = c.Procedure(list);
 
-            CollectionAssert.AreEqual(expected, actual);
+          //  CollectionAssert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void OrderBy4223300_22returned()
