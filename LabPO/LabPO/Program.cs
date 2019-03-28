@@ -209,8 +209,25 @@ namespace LabPO
                             "Добавить столбец, содержащий разницу между столбцами с " +
                             "минимальным и максимальным элементом после каждого столбца с " +
                             "четным отрицательным элементом. ");
+                        EighthTask eiTask = new EighthTask();
+                        int[,] a = new int[4, 4];
 
-
+                        Random random = new Random();
+                        for (int i = 0; i < 4; i++)
+                        {
+                            for (int j = 0; j < 4; j++)
+                            {
+                                a[i, j] = random.Next(-9,10);
+                                Console.Write("{0,4}", a[i, j]);
+                            }
+                            Console.WriteLine();
+                        }
+                        var resultEig = eiTask.Method(a);
+                        //int[,] c = new int[2, 3] { { 2, -1, 8 }, { 7, 2, -4 } };
+                        foreach (int element in a)
+                        {
+                            Console.WriteLine("{0,4}", element);
+                        }
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
