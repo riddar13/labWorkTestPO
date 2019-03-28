@@ -151,6 +151,7 @@ namespace LabPO
                             "на котором его элементы образуют возрастающую последовательность.");
                         FifthTask TaskFive = new FifthTask();
                         list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
+                
                         TaskFive.Method(list);
 
 
@@ -166,13 +167,13 @@ namespace LabPO
                             "Назовем серией группу подряд идущих одинаковых элементов, " +
                             "а длиной серии — количество этих элементов(длина серии может быть равна 1). " +
                             "Удалить из массива самую длинную серию.");
-                        //    SixthTask sixthTask = new SixthTask();
+                        SixthTask sixthTask = new SixthTask();
                         List<int> listSix;
                         string strg = Console.ReadLine();
                         int range = Convert.ToInt32(strg);
                         // int range = 9;
                         listSix = Enumerable.Range(0, range).Select(q => r.Next(1, 10)).ToList();
-                        //   sixthTask.Method(listSix);
+                        sixthTask.Method(listSix);
 
 
                         Console.ForegroundColor = ConsoleColor.Red;

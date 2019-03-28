@@ -26,7 +26,6 @@ namespace LabPO.Tests
                 1,
                 2,
                 3,
-                8,
                 6,
                 7,
                 8,
@@ -38,7 +37,39 @@ namespace LabPO.Tests
             var actual = c.Method(x);
 
             // assert
-            Assert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestTwo()
+        {
+            // arrange
+            var x = new List<int>()
+            {
+                1,
+                2,
+                1,
+                6,
+                7,
+                8
+            };
+            var expected = new List<int>()
+            {
+                1,
+                2,
+                8,
+                1,
+                6,
+                7,
+                8,
+                8
+            };
+
+            // act
+            FifthTask c = new FifthTask();
+            var actual = c.Method(x);
+
+            // assert
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
