@@ -112,14 +112,32 @@ namespace LabPO
                             "а справа от границы - большие или равные b. ");
                         FouthTask TaskF = new FouthTask();
 
-                        int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
-                        foreach (int i in arr)
+                        //int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
+                        var spis = new List<int>()
+                        {
+                            1,
+                            9,
+                            4,
+                            3,
+                            6,
+                            7,
+                            2,
+                            5,
+                            8,
+                            0
+                        };
+                        foreach (int i in spis)
                             Console.Write(i + " ");
                         Console.Write("\n");
-                        var list23 = new List<int>();
-                      //  list23 = Console.ReadLine();
-                        //int b = Convert.ToInt32(strFour);
-                        TaskF.Method(arr, strFour);
+                        
+                        st = Console.ReadLine();
+                        int y = Convert.ToInt32(st);
+                        var numCent = new List<int>()
+                        {
+                            y
+                        };
+                        
+                        TaskF.Method(spis, numCent);
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");

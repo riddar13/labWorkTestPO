@@ -10,57 +10,75 @@ namespace LabPO.Tests
         [TestMethod]
         public void Sort1943672580_5by_1432059678returned()
         {
-            int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
+            var spis = new List<int>()
+                        {
+                            1,
+                            9,
+                            4,
+                            3,
+                            6,
+                            7,
+                            2,
+                            5,
+                            8,
+                            0
+                        };
+            var numCent = new List<int>()
+                        {
+                            5
+                        };
             var expected = new List<int>()
             {
                 1,
+                4,
+                3,
                 2,
-                2,
-                2
+                0,
+                5,
+                9,
+                6,
+                7,
+                8
             };
             FouthTask c = new FouthTask();
-          //  var actual = c.Procedure(list);
-
-          //  CollectionAssert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void OrderBy4223300_22returned()
-        {
-            var list = new List<int>()
-            {
-                4,
-                2,
-                2,
-                3,
-                3
-            };
-            var expected = new List<int>()
-            {
-                2,
-                2
-            };
-            ThirdTask c = new ThirdTask();
-            var actual = c.Procedure(list);
-
+            var actual = c.Method(spis, numCent);
             CollectionAssert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void OrderBy123_12returned()
+        public void Sort1943672580_1by_1094367258returned()
         {
-            var list = new List<int>()
-            {
-                1,
-                2,
-                3
-            };
+            var spis = new List<int>()
+                        {
+                            1,
+                            9,
+                            4,
+                            3,
+                            6,
+                            7,
+                            2,
+                            5,
+                            8,
+                            0
+                        };
+            var numCent = new List<int>()
+                        {
+                            1
+                        };
             var expected = new List<int>()
             {
+                0,
                 1,
-                2
+                9,
+                4,
+                3,
+                6,
+                7,
+                2,
+                5,
+                8
             };
-            ThirdTask c = new ThirdTask();
-            var actual = c.Procedure(list);
-
+            FouthTask c = new FouthTask();
+            var actual = c.Method(spis, numCent);
             CollectionAssert.AreEqual(expected, actual);
         }
     }
