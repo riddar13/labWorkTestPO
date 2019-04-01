@@ -17,7 +17,6 @@ namespace LabPO
             Console.WriteLine("\nЦИФРА:  1   2   3   4   5   6   7   8   9" +
                 "\n        |   |   |   |   |   |   |   |   |"
                 + "\nКОЛВО:  " + string.Join("   ", countArray));
-            //Console.WriteLine(string.Join("   ", countArray));
             return string.Join(" ", countArray);
 
         }
