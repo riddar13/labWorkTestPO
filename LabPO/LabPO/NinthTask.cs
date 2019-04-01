@@ -39,20 +39,6 @@ namespace LabPO
             int findj = 0;//считает столбец с наименьшими элементами
             while (m < creat.GetLength(1))
             {
-                /* for (int i = 0; i < a.GetLength(0); i++)
-                 {
-                     for (int j = 0; j < a.GetLength(1); j++)
-                     {
-                         if (x > a[i, j])
-                         {
-                             x = a[i, j];
-                             findj = j;
-                         }
-
-
-
-                     }
-                 }*/
                 for (int i = 0; i < stroka.GetLength(0); i++)
                 {
                     if (x < stroka[i])
