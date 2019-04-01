@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LabPO
 {
@@ -274,9 +275,29 @@ namespace LabPO
                             "В данном разделе предполагаются задачи вида: взять любую " +
                             "программу из написанных ранее и переделать ее таким образом, чтобы " +
                             "входные данные считывались из одного файла, а результат решения " +
-                            "выводился в другой. ");
+                            "выводился в другой.\n");
 
+                        FirstTask First = new FirstTask();
+                        if (File.Exists("input.txt"))
+                        {
+                            Console.WriteLine("File exists...");
+                            var textInFile = File.ReadAllText("input.txt");
 
+                            if (Int32.TryParse(textInFile, out n))
+                            {
+                                Console.WriteLine("n = " + n);
+                                var result1 = First.Method(n);
+                                Console.WriteLine("2n! = " + result1);
+                                string text = result1.ToString();
+                                File.WriteAllText("output.txt", text);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }                           
+                        }
+                        else
+                            Console.WriteLine("File not found.");
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
