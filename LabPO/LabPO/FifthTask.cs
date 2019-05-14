@@ -25,7 +25,7 @@ namespace LabPO
             {
                 if (a[i] > a[i + 1])
                 {
-                    list.Add(a[i]);
+                    list.Add(a[i]);    
                     list.Add(b);
                     //list.Add(a[i + 1]);
                 }
@@ -36,9 +36,22 @@ namespace LabPO
                 }
             }
             list.Add(a[a.Count - 1]);
+            Console.ForegroundColor = ConsoleColor.Green;
             list.Add(b);
-            foreach (int i in list)
-                Console.Write(i + " ");
+            Console.ResetColor();
+            //foreach (int i in list)
+             //   Console.Write(i + " ");
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i] == b)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(list[i] + " ");
+                    Console.ResetColor();
+                }
+                else
+                    Console.Write(list[i] + " ");
+            }
             return list; 
         }
     }

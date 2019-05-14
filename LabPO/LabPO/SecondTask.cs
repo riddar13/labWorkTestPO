@@ -14,5 +14,11 @@ namespace LabPO
                             StringSplitOptions.RemoveEmptyEntries).Reverse());
             return n;
         }
+        public bool IsCyrillic(char c)
+        {
+            if (('А' <= c && c <= 'Я') || ('а' <= c && c <= 'я') || (192 <= c && c <= 255) || c == 'ё' || c == 'Ё' || c == ' ')
+                return true;
+            return false;
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace LabPO
     {
         public int[,] Method(int[,] a)
         {
+            
+
             // находим минимальный элемент и сохраняем его коорды
             int minElement = a[0, 0] , minX = 0, minY = 0;
             for (int i = 0; i < a.GetLength(0); i++)
@@ -38,15 +40,43 @@ namespace LabPO
                     }
                 }
             }
+            //вывод матрицы
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if(j == minY)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("{0,4}", a[i, j]);
+                        Console.ResetColor();
+                    }
+                   else
+                    {
+                        if(j == maxX)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("{0,4}", a[i, j]);
+                            Console.ResetColor();
+                        }
+                        else
+                            Console.Write("{0,4}", a[i, j]);
+                    }
+                    //Console.Write("{0,4}", a[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
             // создаем новый массив в котором сохраняем разнизцу: 
             // минСтолбец - максСтолбец
             int[,] stolb = new int[a.GetLength(0), 1];
             for (int i = 0; i < a.GetLength(0); i++)
             {
                 stolb[i, 0] = a[i, minY] - a[i, maxY];
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(stolb[i, 0]);
+                Console.ResetColor();
             }
-
             // считаем колво столбцов, в которых есть четный отрицательный
             // элемент и сохраняем в новом массиве 1 или 0
             // 1 - есть отрицательный, 0 - нет отрицательного
@@ -111,6 +141,40 @@ namespace LabPO
                 }
             }
 
+            int[] stolbBlue = new int[resultMatrix.GetLength(1)];
+            var prove = 0;
+            for (int j = 0; j < resultMatrix.GetLength(1); j++)
+            {
+                for (int i = 0; i < resultMatrix.GetLength(0); i++)
+                {
+                    if (resultMatrix[i, j] == stolb[i, 0])
+                        prove++;
+                }
+                if (prove == resultMatrix.GetLength(0))
+                    stolbBlue[j] = 1;
+                else
+                    stolbBlue[j] = 0;
+                prove = 0;
+                //Console.WriteLine();
+            }
+            //Console.WriteLine();
+
+            for (int i = 0; i < resultMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < resultMatrix.GetLength(1); j++)
+                {
+                    if (stolbBlue[j] == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write("{0,4}", resultMatrix[i, j]);
+                        Console.ResetColor();
+                    }
+                    else
+                        Console.Write("{0,4}", resultMatrix[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
             return resultMatrix;
         }
     }

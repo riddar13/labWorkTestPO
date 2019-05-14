@@ -9,6 +9,7 @@ namespace LabPO
 {
     class Program
     {
+    
         static void Main(string[] args)
         {
             Random r = new Random();
@@ -54,8 +55,26 @@ namespace LabPO
                             "(разделенные одним пробелом), но расположенные в обратном порядке. \nEnter string:");
 
                         SecondTask TaskSecond = new SecondTask();
-                        st = Console.ReadLine();
-                        result = TaskSecond.Method(st);
+                        string name;
+                            while (true)
+                            {
+                                name = Console.ReadLine();
+                                if (!String.IsNullOrEmpty(name))
+                                {
+                                    if (char.IsUpper(name[0]) && name.ToCharArray().All(c => TaskSecond.IsCyrillic(c)))
+                                        break;
+                                }
+
+                                Console.WriteLine("Неправильный формат данных, введите еще раз:");
+                            }
+                      
+
+
+
+
+                       // SecondTask TaskSecond = new SecondTask();
+                       // st = Console.ReadLine();
+                        result = TaskSecond.Method(name);
                         Console.WriteLine("Result: {0}", result);
 
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -73,32 +92,51 @@ namespace LabPO
                         ThirdTask TaskThree = new ThirdTask();
 
                         //List<int> list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
-                        var list = new List<int>();
-                        for (int i = 0; i < 10; i++)
+                        /*  var list = new List<int>();
+                          for (int i = 0; i < 10; i++)
+                          {
+                              var str = Console.ReadLine();
+                              if (Int32.TryParse(str, out n))
+                              {
+                                  n = Int32.Parse(str);
+                                  if ((n == 0) || (n<0))
+                                  {
+                                      Console.WriteLine("Некорректный ввод");
+                                  }
+                                  else
+                                      list.Add(n);
+                              }
+                              else
+                              {
+                                  Console.WriteLine("Некорректный ввод");
+                              }
+                          }*/
+                        Random randd = new Random();
+                        st = Console.ReadLine();
+                        int nn = 0;
+                        if (Int32.TryParse(st, out n))
                         {
-                            var str = Console.ReadLine();
-                            if (Int32.TryParse(str, out n))
+                            
+                            var listt = new List<int>();
+                            for (int i = 0; i < n; i++)
                             {
-                                n = Int32.Parse(str);
-                                if ((n == 0) || (n<0))
-                                {
-                                    Console.WriteLine("Некорректный ввод");
-                                }
-                                else
-                                    list.Add(n);
+                                nn = randd.Next(1, 10);
+                                listt.Add(nn);
                             }
-                            else
-                            {
-                                Console.WriteLine("Некорректный ввод");
-                            }
-                        }
-                        foreach (int i in list)
-                            Console.Write(i + " ");
-                        Console.WriteLine();
+                            foreach (int i in listt)
+                                Console.Write(i + " ");
+                            Console.WriteLine();
 
-                        foreach (int i in TaskThree.Procedure(list))
-                               Console.Write(i + " ");
-                        Console.WriteLine();
+                            foreach (int i in TaskThree.Procedure(listt))
+                                Console.Write(i + " ");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
+
+          
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
@@ -113,32 +151,59 @@ namespace LabPO
                             "а справа от границы - большие или равные b. ");
                         FouthTask TaskF = new FouthTask();
 
-                        //int[] arr = new[] { 1, 9, 4, 3, 6, 7, 2, 5, 8, 0 };
-                        var spis = new List<int>()
-                        {
-                            1,
-                            9,
-                            4,
-                            3,
-                            6,
-                            7,
-                            2,
-                            5,
-                            8,
-                            0
-                        };
-                        foreach (int i in spis)
-                            Console.Write(i + " ");
-                        Console.Write("\n");
-                        
+
+
+                        /*  foreach (int i in spis)
+                              Console.Write(i + " ");
+                          Console.Write("\n");*/
+                        var spis = new List<int>();
                         st = Console.ReadLine();
-                        int y = Convert.ToInt32(st);
-                        var numCent = new List<int>()
+                        nn = 0;
+                        if (Int32.TryParse(st, out n))
                         {
-                            y
-                        };
+                            randd = new Random();
+                            
+                            for (int i = 0; i < n; i++)
+                            {
+                                nn = randd.Next(1, 10);
+                                spis.Add(nn);
+                            }
+                            foreach (int i in spis)
+                                Console.Write(i + " ");
+                            Console.WriteLine();
+
+                           
+                        }
+                        else
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
+                      //  var numCent = new List<int>();
+                        st = Console.ReadLine();
+                        // int y = Convert.ToInt32(st);
+                        int y;
+                        if (Int32.TryParse(st, out y))
+                        {
+                            if ( spis.Min() <= y && y <= spis.Max())
+                            {
+                                var numCent = new List<int>()
+                                {
+                                    y
+                                };
+                                TaskF.Method(spis, numCent);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод b");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
+                       
                         
-                        TaskF.Method(spis, numCent);
+                      //  TaskF.Method(spis, numCent);
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
@@ -151,9 +216,29 @@ namespace LabPO
                             "Вставить в массив максимальный элемент после каждого участка, " +
                             "на котором его элементы образуют возрастающую последовательность.");
                         FifthTask TaskFive = new FifthTask();
-                        list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
+                        Console.WriteLine("введи размер строки");
+                        var sttt = Console.ReadLine();
+                        int nnn;
+                        var list = new List<int>();
+                        try
+                        {
+                            if (Int32.TryParse(sttt, out nnn))
+                            {
+                                list = Enumerable.Range(0, nnn).Select(q => r.Next(1, 10)).ToList();
+                                TaskFive.Method(list);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
+                       // list = Enumerable.Range(0, 10).Select(q => r.Next(1, 10)).ToList();
                 
-                        TaskFive.Method(list);
+                       // TaskFive.Method(list);
 
 
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -170,12 +255,18 @@ namespace LabPO
                             "Удалить из массива самую длинную серию.");
                         SixthTask sixthTask = new SixthTask();
                         List<int> listSix;
-                        string strg = Console.ReadLine();
-                        int range = Convert.ToInt32(strg);
-        
-                        listSix = Enumerable.Range(0, range).Select(q => r.Next(1, 10)).ToList();
-                        sixthTask.Method(listSix);
+                        try
+                        {
+                            string strg = Console.ReadLine();
+                            int range = Convert.ToInt32(strg);
 
+                            listSix = Enumerable.Range(0, range).Select(q => r.Next(1, 10)).ToList();
+                            sixthTask.Method(listSix);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
@@ -190,13 +281,37 @@ namespace LabPO
                         SeventhTask seventhTask = new SeventhTask();
 
                         //int[] arrey = { 1, 4, 3, 5, 4, 7, 6, 5, 4, 5, 3, 1, 8, 9, 8, 4 };
-                        int[] array = new int[10];
+                        Console.WriteLine("введи размер строки");
+                        var st3 = Console.ReadLine();
+                        int n3;
+                        try
+                        {
+                            if (Int32.TryParse(st3, out n3))
+                            {
+                                int[] array = new int[n3];
+                                Random rand = new Random();
+                                for (int i = 0; i < array.Length; i++)
+                                    array[i] = rand.Next(1, 10); // [0 - 2^31)
+
+
+                                seventhTask.Method(array);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Некорректный ввод");
+                        }
+                       /* int[] array = new int[10];
                         Random rand = new Random();
                         for (int i = 0; i < array.Length; i++)
                             array[i] = rand.Next(1, 10); // [0 - 2^31)
 
 
-                        seventhTask.Method(array);
+                        seventhTask.Method(array);*/
 
 
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -211,24 +326,81 @@ namespace LabPO
                             "минимальным и максимальным элементом после каждого столбца с " +
                             "четным отрицательным элементом. ");
                         EighthTask eiTask = new EighthTask();
-                        int[,] a = new int[4, 4];
-
-                        Random random = new Random();
-                        for (int i = 0; i < 4; i++)
+                        Console.WriteLine("введи размер матрицы");
+                        int x1 = 0, y1 = 0;
+                        try
                         {
-                            for (int j = 0; j < 4; j++)
+                            for (int i = 0; i < 1; i++)
                             {
-                                a[i, j] = random.Next(-9,10);
-                                Console.Write("{0,4}", a[i, j]);
+                                var str = Console.ReadLine();
+                                if (Int32.TryParse(str, out n))
+                                {
+                                    n = Int32.Parse(str);
+                                    if ((n == 0) || (n < 0))
+                                    {
+                                        Console.WriteLine("Некорректный ввод");
+                                    }
+                                    else
+                                        x1 = n;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Некорректный ввод");
+                                }
                             }
+                            for (int i = 0; i < 1; i++)
+                            {
+                                var str = Console.ReadLine();
+                                if (Int32.TryParse(str, out n))
+                                {
+                                    n = Int32.Parse(str);
+                                    if ((n == 0) || (n < 0))
+                                    {
+                                        Console.WriteLine("Некорректный ввод");
+                                    }
+                                    else
+                                        y1 = n;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Некорректный ввод");
+                                }
+                            }
+                            int[,] a = new int[x1, y1];
                             Console.WriteLine();
+                            Console.Write("MIN - ");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("green");
+                            Console.ResetColor();
+                            Console.WriteLine();
+                            Console.Write("MAX - ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("red");
+                            Console.ResetColor();
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Random random = new Random();
+                            for (int i = 0; i < x1; i++)
+                            {
+                                for (int j = 0; j < y1; j++)
+                                {
+                                    a[i, j] = random.Next(-9, 10);
+                                   // Console.Write("{0,4}", a[i, j]);
+                                    
+                                }
+                                //Console.WriteLine();
+                            }
+                            var resultEig = eiTask.Method(a);
+                           /* for (int i = 0; i < resultEig.GetLength(0); i++)
+                            {
+                                for (int j = 0; j < resultEig.GetLength(1); j++)
+                                    Console.Write("{0,4}", resultEig[i, j]);
+                                Console.WriteLine();
+                            }*/
                         }
-                        var resultEig = eiTask.Method(a);
-                        for (int i = 0; i < resultEig.GetLength(0); i++)
+                        catch
                         {
-                            for (int j = 0; j < resultEig.GetLength(1); j++)
-                                Console.Write("{0,4}", resultEig[i, j]);
-                            Console.WriteLine();
+                            Console.WriteLine("Некорректный ввод");
                         }
 
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -243,14 +415,52 @@ namespace LabPO
                             "содержащей максимальный элемент матрицы. ");
 
                         NinthTask nineTask = new NinthTask();
-                        int[,] mat = new int[4, 4];
-
-                        random = new Random();
-                        for (int i = 0; i < 4; i++)
+                        Console.WriteLine("введи размер матрицы");
+                        x1 = 0; y1 = 0;
+                        for (int i = 0; i < 1; i++)
                         {
-                            for (int j = 0; j < 4; j++)
+                            var str = Console.ReadLine();
+                            if (Int32.TryParse(str, out n))
                             {
-                                mat[i, j] = random.Next(-9, 10);
+                                n = Int32.Parse(str);
+                                if ((n == 0) || (n < 0))
+                                {
+                                    Console.WriteLine("Некорректный ввод");
+                                }
+                                else
+                                    x1 = n;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }
+                        }
+                        for (int i = 0; i < 1; i++)
+                        {
+                            var str = Console.ReadLine();
+                            if (Int32.TryParse(str, out n))
+                            {
+                                n = Int32.Parse(str);
+                                if ((n == 0) || (n < 0))
+                                {
+                                    Console.WriteLine("Некорректный ввод");
+                                }
+                                else
+                                    y1 = n;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Некорректный ввод");
+                            }
+                        }
+                        int[,] mat = new int[x1, y1];
+
+                        Random random11 = new Random();
+                        for (int i = 0; i < x1; i++)
+                        {
+                            for (int j = 0; j < y1; j++)
+                            {
+                                mat[i, j] = random11.Next(-9, 10);
                                 Console.Write("{0,4}", mat[i, j]);
                             }
                             Console.WriteLine();
@@ -314,6 +524,8 @@ namespace LabPO
 
                 Console.Clear();
             }
+          
         }
+    
     }
 }
