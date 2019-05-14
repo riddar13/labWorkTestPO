@@ -25,11 +25,31 @@ namespace LabPO
                 }
             }
 
+            Console.WriteLine();
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (i == maxX)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write("{0,4}", a[i, j]);
+                        Console.ResetColor();
+                    }
+                    else
+                        Console.Write("{0,4}", a[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
             int[] stroka = new int[a.GetLength(1)];
             for (int i = 0; i < stroka.Length; i++)
             {
                 stroka[i] = a[maxX, i];
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(stroka[i]);
+                Console.ResetColor();
             }
             Console.WriteLine();
 
@@ -62,6 +82,22 @@ namespace LabPO
 
 
         int[,] resultMatrix = new int[2, 2];
+
+            for (int i = 0; i < creat.GetLength(0); i++)
+            {
+                for (int j = 0; j < creat.GetLength(1); j++)
+                {
+                    if (i == maxX)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write("{0,4}", creat[i, j]);
+                        Console.ResetColor();
+                    }
+                    else
+                        Console.Write("{0,4}", creat[i, j]);
+                }
+                Console.WriteLine();
+            }
             return creat;
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
 
 namespace LabPO
 {
@@ -417,61 +418,68 @@ namespace LabPO
                         NinthTask nineTask = new NinthTask();
                         Console.WriteLine("введи размер матрицы");
                         x1 = 0; y1 = 0;
-                        for (int i = 0; i < 1; i++)
+                        try
                         {
-                            var str = Console.ReadLine();
-                            if (Int32.TryParse(str, out n))
+                            for (int i = 0; i < 1; i++)
                             {
-                                n = Int32.Parse(str);
-                                if ((n == 0) || (n < 0))
+                                var str = Console.ReadLine();
+                                if (Int32.TryParse(str, out n))
+                                {
+                                    n = Int32.Parse(str);
+                                    if ((n == 0) || (n < 0))
+                                    {
+                                        Console.WriteLine("Некорректный ввод");
+                                    }
+                                    else
+                                        x1 = n;
+                                }
+                                else
                                 {
                                     Console.WriteLine("Некорректный ввод");
                                 }
+                            }
+                            for (int i = 0; i < 1; i++)
+                            {
+                                var str = Console.ReadLine();
+                                if (Int32.TryParse(str, out n))
+                                {
+                                    n = Int32.Parse(str);
+                                    if ((n == 0) || (n < 0))
+                                    {
+                                        Console.WriteLine("Некорректный ввод");
+                                    }
+                                    else
+                                        y1 = n;
+                                }
                                 else
-                                    x1 = n;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Некорректный ввод");
-                            }
-                        }
-                        for (int i = 0; i < 1; i++)
-                        {
-                            var str = Console.ReadLine();
-                            if (Int32.TryParse(str, out n))
-                            {
-                                n = Int32.Parse(str);
-                                if ((n == 0) || (n < 0))
                                 {
                                     Console.WriteLine("Некорректный ввод");
                                 }
-                                else
-                                    y1 = n;
                             }
-                            else
-                            {
-                                Console.WriteLine("Некорректный ввод");
-                            }
-                        }
-                        int[,] mat = new int[x1, y1];
+                            int[,] mat = new int[x1, y1];
 
-                        Random random11 = new Random();
-                        for (int i = 0; i < x1; i++)
-                        {
-                            for (int j = 0; j < y1; j++)
+                            Random random11 = new Random();
+                            for (int i = 0; i < x1; i++)
                             {
-                                mat[i, j] = random11.Next(-9, 10);
-                                Console.Write("{0,4}", mat[i, j]);
+                                for (int j = 0; j < y1; j++)
+                                {
+                                    mat[i, j] = random11.Next(-9, 10);
+                                    //Console.Write("{0,4}", mat[i, j]);
+                                }
+                                //Console.WriteLine();
                             }
-                            Console.WriteLine();
+                            //Console.WriteLine();
+                            var resultMatrix = nineTask.Method(mat);
+                           /* for (int i = 0; i < resultMatrix.GetLength(0); i++)
+                            {
+                                for (int j = 0; j < resultMatrix.GetLength(1); j++)
+                                    Console.Write("{0,4}", resultMatrix[i, j]);
+                                Console.WriteLine();
+                            }*/
                         }
-                        Console.WriteLine();
-                        var resultMatrix = nineTask.Method(mat);
-                        for (int i = 0; i < resultMatrix.GetLength(0); i++)
+                        catch
                         {
-                            for (int j = 0; j < resultMatrix.GetLength(1); j++)
-                                Console.Write("{0,4}", resultMatrix[i, j]);
-                            Console.WriteLine();
+                            Console.WriteLine("Некорректный ввод");
                         }
 
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -507,7 +515,9 @@ namespace LabPO
                             }                           
                         }
                         else
-                            Console.WriteLine("File not found.");
+                            Console.WriteLine("File not found.");        
+                        Process.Start(@"C:\Users\Riddar\Documents\GitHub\labWorkTestPO\LabPO\LabPO\bin\Debug\output.txt");
+
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter to continue...");
