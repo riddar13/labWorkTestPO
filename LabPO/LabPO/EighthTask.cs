@@ -80,18 +80,22 @@ namespace LabPO
             // считаем колво столбцов, в которых есть четный отрицательный
             // элемент и сохраняем в новом массиве 1 или 0
             // 1 - есть отрицательный, 0 - нет отрицательного
-            int colvoOtric = 0, colvo = 0;
+            int colvoOtric = 0, colvo = 0; //otrik = 0;
             int[] chetOtric = new int[a.GetLength(1)];
             for (int j = 0; j < a.GetLength(1); j++)
             {
                 for (int i = 0; i < a.GetLength(0); i++)
                 {
                     if ((a[i, j] < 0) && (a[i, j] % 2 == 0))
-                        colvo++;
+                    {
+                        colvo++; 
+                    }
+                        
                 }
                 if (colvo > 0)
                 {
                     chetOtric[j] = 1;
+                   
                     colvoOtric++;
                 }
                 else
@@ -159,6 +163,29 @@ namespace LabPO
             }
             //Console.WriteLine();
 
+            int otrik = 0;
+            int[,] Otric = new int[2, resultMatrix.GetLength(1)];
+            for (int j = 0; j < resultMatrix.GetLength(1); j++)
+            {
+                for (int i = 0; i < resultMatrix.GetLength(0); i++)
+                {
+                    if ((resultMatrix[i, j] < 0) && (resultMatrix[i, j] % 2 == 0))
+                    {
+                        colvo++; otrik = resultMatrix[i, j];
+                    }
+
+                }
+                if (colvo > 0)
+                {
+                    Otric[0, j] = 1;
+                    Otric[1, j] = otrik;
+                    colvoOtric++;
+                }
+                else
+                    Otric[0, j] = 0;
+                colvo = 0;
+            }
+
             for (int i = 0; i < resultMatrix.GetLength(0); i++)
             {
                 for (int j = 0; j < resultMatrix.GetLength(1); j++)
@@ -170,7 +197,16 @@ namespace LabPO
                         Console.ResetColor();
                     }
                     else
-                        Console.Write("{0,4}", resultMatrix[i, j]);
+                    {
+                        if (resultMatrix[i, j] == Otric[1, j])
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("{0,4}", resultMatrix[i, j]);
+                            Console.ResetColor();
+                        }
+                        else
+                            Console.Write("{0,4}", resultMatrix[i, j]);
+                    }
                 }
                 Console.WriteLine();
             }

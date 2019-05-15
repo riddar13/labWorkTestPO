@@ -398,7 +398,7 @@ namespace LabPO
                                     Console.Write("{0,4}", resultEig[i, j]);
                                 Console.WriteLine();
                             }*/
-                        }
+                       }
                         catch
                         {
                             Console.WriteLine("Некорректный ввод");
